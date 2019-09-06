@@ -16,8 +16,12 @@ public class MainActivityViewModel extends ViewModel {
 
     public void init() {
         if (nicePlaceMutableLiveData != null) {
+
+            //will return nothing and not recreate the livedata
             return;
         }
+
+        //create repo and livedata for first time
         nicePlaceRepository = NicePlaceRepository.getInstance();
         nicePlaceMutableLiveData = nicePlaceRepository.getNicePlaces();
     }
