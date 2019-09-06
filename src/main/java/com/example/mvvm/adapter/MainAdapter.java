@@ -14,22 +14,11 @@ import com.example.mvvm.model.NicePlace;
 
 import java.util.List;
 
-public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder>{
-
-    private List<NicePlace> nicePlaces;
-    private Context context;
+public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
 
     private static final String TAG = "MainAdapter";
-
-    public class ViewHolder extends RecyclerView.ViewHolder{
-
-        private TextView name;
-
-        public ViewHolder(View itemView) {
-            super(itemView);
-            name = itemView.findViewById(R.id.item);
-        }
-    }
+    private List<NicePlace> nicePlaces;
+    private Context context;
 
     public MainAdapter(Context context, List<NicePlace> nicePlaces) {
         this.context = context;
@@ -37,7 +26,7 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder>{
     }
 
     @Override
-    public ViewHolder onCreateViewHolder( ViewGroup parent, int viewType) {
+    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         Log.d(TAG, "MainAdapter onCreateViewHolder: ");
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.content_item, parent, false);
         ViewHolder viewHolder = new ViewHolder(view);
@@ -46,12 +35,12 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder>{
 
     @Override
     public void onBindViewHolder(ViewHolder holder, final int position) {
-        Log.d(TAG, "MainAdapter: "+ nicePlaces.get(position).getName()+ " "+position);
+        Log.d(TAG, "MainAdapter: " + nicePlaces.get(position).getName() + " " + position);
         holder.name.setText(nicePlaces.get(position).getName());
         holder.name.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.d(TAG, "onClick: "+ nicePlaces.get(position).getName());
+                Log.d(TAG, "onClick: " + nicePlaces.get(position).getName());
             }
         });
     }
@@ -59,6 +48,16 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder>{
     @Override
     public int getItemCount() {
         return nicePlaces.size();
+    }
+
+    public class ViewHolder extends RecyclerView.ViewHolder {
+
+        private TextView name;
+
+        public ViewHolder(View itemView) {
+            super(itemView);
+            name = itemView.findViewById(R.id.item);
+        }
     }
 
 }

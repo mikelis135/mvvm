@@ -14,8 +14,8 @@ public class MainActivityViewModel extends ViewModel {
     private MutableLiveData<List<NicePlace>> nicePlaceMutableLiveData;
     private NicePlaceRepository nicePlaceRepository;
 
-    public void init(){
-        if (nicePlaceMutableLiveData != null){
+    public void init() {
+        if (nicePlaceMutableLiveData != null) {
             return;
         }
         nicePlaceRepository = NicePlaceRepository.getInstance();
@@ -25,6 +25,7 @@ public class MainActivityViewModel extends ViewModel {
     public LiveData<List<NicePlace>> getNicePlaceMutableLiveData() {
         return nicePlaceMutableLiveData;
     }
+
     public LiveData<List<NicePlace>> setNicePlaceMutableLiveData(NicePlace nicePlace) {
         return nicePlaceRepository.setNewNicePlaces(nicePlace.getName(), nicePlace.getSurname());
     }

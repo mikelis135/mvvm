@@ -20,13 +20,17 @@ public class NicePlaceRepository {
     }
 
     public MutableLiveData<List<NicePlace>> getNicePlaces(){
-        setNicePlaces();
         MutableLiveData<List<NicePlace>> nicePlaceMutableLiveData = new MutableLiveData<>();
+        if (dataSet.size() != 0) {
+            nicePlaceMutableLiveData.setValue(dataSet);
+            return nicePlaceMutableLiveData;
+        }
+        setNicePlaces();
         nicePlaceMutableLiveData.setValue(dataSet);
         return nicePlaceMutableLiveData;
     }
 
-    public void setNicePlaces(){
+    private void setNicePlaces() {
         dataSet.add(new NicePlace("Lagos", ""));
         dataSet.add(new NicePlace("London", ""));
         dataSet.add(new NicePlace("London", ""));
